@@ -304,7 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (curso.modulos && curso.modulos.length > 0) {
                 modulosList.innerHTML = curso.modulos.map(m => `
                     <div class="modulo-item">
-                        <div class="modulo-header">${m.titulo}</div>
+                        <div class="modulo-header">
+                            <img src="/assets/add_2.svg" alt="" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 8px;" aria-hidden="true">
+                            <span>${m.titulo}</span>
+                        </div>
                         ${m.descricao ? `<div class="modulo-desc">${m.descricao}</div>` : ''}
                         ${m.aulas && m.aulas.length > 0 ? `
                             <ul class="aulas-list">

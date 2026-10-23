@@ -66,6 +66,10 @@
 
                 <!-- Painel de Filtros e Busca -->
                 <div class="filtros-box" role="search" aria-label="Filtros de pesquisa de cursos">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.75rem;">
+                        <img src="/assets/logo-sesi-industria-primary.svg" alt="SESI Indústria" style="height: 28px; width: auto;">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary-dark); text-transform: uppercase; letter-spacing: 0.5px;">Painel de Filtros Interativos</span>
+                    </div>
                     <div class="filtros-grid">
                         <!-- Busca por Nome -->
                         <div class="filtro-item">
@@ -116,6 +120,14 @@
                 <div class="resultados-status-bar">
                     <div id="contadorResultados" class="contador-resultados" aria-live="polite">
                         Carregando cursos...
+                    </div>
+                    <div class="nav-arrows" aria-hidden="true" style="display: flex; gap: 0.5rem; align-items: center;">
+                        <button type="button" class="btn-arrow" style="background: #FFF; border: 1px solid var(--color-border); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;" aria-label="Navegar cursos para a esquerda" onclick="document.getElementById('cursosGrid').scrollBy({left: -350, behavior: 'smooth'})">
+                            <img src="/assets/arrow-navigation-1.svg" alt="" style="width: 14px; height: 14px;">
+                        </button>
+                        <button type="button" class="btn-arrow" style="background: #FFF; border: 1px solid var(--color-border); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;" aria-label="Navegar cursos para a direita" onclick="document.getElementById('cursosGrid').scrollBy({left: 350, behavior: 'smooth'})">
+                            <img src="/assets/arrow-navigation.svg" alt="" style="width: 14px; height: 14px;">
+                        </button>
                     </div>
                 </div>
 
