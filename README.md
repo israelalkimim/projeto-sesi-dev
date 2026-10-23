@@ -7,6 +7,9 @@
 
 Aplicação Web completa desenvolvida para a avaliação prática do Processo Seletivo de **Desenvolvedor de Sistemas I** do **Centro de Tecnologias e Educação Digital (CTED - SESI/SENAI)** — Edital 519/2026-DEV.
 
+* **Candidato:** Israel Alkimim
+* **Repositório GitHub:** [https://github.com/israelalkimim/projeto-sesi-dev](https://github.com/israelalkimim/projeto-sesi-dev)
+
 ---
 
 ## 1. Objetivo da Aplicação
