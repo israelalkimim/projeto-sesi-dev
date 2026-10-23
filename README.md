@@ -80,6 +80,8 @@ A aplicação adota uma **Arquitetura em Camadas Desacopladas** integrada em um 
 c:\projetoDev_sesi\
 │
 ├── SesiIndustria.sln                     # Arquivo de Solução do .NET
+├── Dockerfile                            # Imagem Docker multi-stage para deploy em produção
+├── .dockerignore                         # Regras de exclusão de arquivos para o build Docker
 ├── README.md                             # Documentação técnica completa
 ├── USO_DE_IA.md                          # Registro obrigatório do uso de Inteligência Artificial
 ├── checklist_projeto_sesi.md             # Checklist de controle do desenvolvimento
@@ -226,15 +228,19 @@ A aplicação foi construída com foco em **Mobile-First e Design Responsivo**:
 
 ## 11. Processo de Publicação
 
-A publicação é realizada gerando o pacote otimizado e implantando gratuitamente:
+A publicação foi realizada em ambiente de nuvem gratuito utilizando contêineres Docker:
 
 1. **Geração do Build de Produção (`dotnet publish`):**
    ```bash
    dotnet publish -c Release -o publish/
    ```
-2. **Hospedagem Gratuita Selecionada:**
-   * A aplicação foi projetada para deploy sem custos (Render.com, Fly.io ou Azure App Service Free F1).
-   * O container ou binário .NET 8 executa a aplicação servindo a API e os arquivos estáticos de `wwwroot` no mesmo host, eliminando problemas de CORS em produção.
+2. **Conteinerização com Dockerfile Multi-Stage:**
+   * Criado o `Dockerfile` na raiz da solução com build em `mcr.microsoft.com/dotnet/sdk:8.0` e execução enxuta no runtime `mcr.microsoft.com/dotnet/aspnet:8.0`.
+   * A aplicação serve tanto os endpoints REST quanto os arquivos estáticos de `wwwroot` na mesma porta (`8080` no container / mapeada para `443` HTTPS na nuvem).
+3. **Deploy Automatizado no Render.com:**
+   * Repositório integrado diretamente via Git Webhook.
+   * Aplicação em execução contínua com SSL/HTTPS ativo:  
+     🔗 **[https://projeto-sesi-dev.onrender.com](https://projeto-sesi-dev.onrender.com)**
 
 ---
 
