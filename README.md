@@ -9,6 +9,8 @@ Aplicação Web completa desenvolvida para a avaliação prática do Processo Se
 
 * **Candidato:** Israel Alkimim
 * **Repositório GitHub:** [https://github.com/israelalkimim/projeto-sesi-dev](https://github.com/israelalkimim/projeto-sesi-dev)
+* **Aplicação Publicada (Online):** [https://projeto-sesi-dev.onrender.com](https://projeto-sesi-dev.onrender.com)
+* **Documentação Swagger (Online):** [https://projeto-sesi-dev.onrender.com/swagger](https://projeto-sesi-dev.onrender.com/swagger)
 
 ---
 
