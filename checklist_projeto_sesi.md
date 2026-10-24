@@ -11,17 +11,17 @@
 - [ ] **1.1.** Instalar o **.NET 8 SDK (LTS)** na máquina e validar no terminal (`dotnet --version`).
 - [ ] **1.2.** Descompactar os arquivos visuais de [Arquivos_Atividade prática_519_2026_DEV.zip](file:///c:/projetoDev_sesi/Arquivos_Atividade%20pr%C3%A1tica_519_2026_DEV.zip) (fontes `Open Sans`, ícones `.svg` e imagens `.png`).
 - [ ] **1.3.** Inicializar o repositório Git local com `.gitignore` adequado para projetos C#/.NET.
-- [ ] **1.4.** Criar a estrutura da solução em C#/.NET (`SesiIndustria.Api` / aplicação web) organizada em pastas claras (`Models`, `Data`, `Controllers`, `DTOs`, `wwwroot`).
+- [ ] **1.4.** Terei que criar a estrutura da solução em C#/.NET (`SesiIndustria.Api` / aplicação web) organizada em pastas claras (`Models`, `Data`, `Controllers`, `DTOs`, `wwwroot`).
 
 ---
 
 ## 🗄️ Fase 2: Banco de Dados e Back-End em C#/.NET (API REST)
-- [ ] **2.1.** Criar a modelagem de dados em C# atendendo a todos os campos obrigatórios do edital:
+- [ ] **2.1.** Terei que criar a modelagem de dados em C# atendendo a todos os campos obrigatórios do edital:
   - [ ] `Curso`: Id, Nome Completo, Nome Breve, Descrição, Categoria, Modalidade, Carga Horária, Público-Alvo, Status, Imagem de Apresentação, Data de Disponibilização (quando aplicável).
   - [ ] `Modulo` / `Aula`: Estrutura de módulos e descrições de aulas vinculadas a cada curso para exibição nos detalhes.
 - [ ] **2.2.** Configurar o banco de dados de código aberto (**SQLite** com **Entity Framework Core**).
 - [ ] **2.3.** Gerar as **Migrations** e o **Script SQL** do banco (para cumprir o Entregável nº 5).
-- [ ] **2.4.** Criar o *Data Seeding* (carga inicial de dados fictícios) respeitando os mínimos exigidos:
+- [ ] **2.4.** Terei que criar o *Data Seeding* (carga inicial de dados fictícios) respeitando os mínimos exigidos:
   - [ ] Mínimo de **6 cursos** (criaremos 8 cursos baseados nos cards do Figma: Metalurgia, Têxtil, Qualidade, Física, Química/Sustentabilidade, Ciência dos Materiais, etc.);
   - [ ] Mínimo de **3 categorias** (ex.: *Ciências da Natureza*, *Matemática*, *Linguagens*, *Sustentabilidade*);
   - [ ] Mínimo de **2 modalidades** (ex.: *EAD / 100% Online* e *Semipresencial / Híbrido*);
