@@ -26,7 +26,7 @@ Aplicação Web completa desenvolvida para a avaliação prática do Processo Se
 | **5** | **Scripts, migrations ou arquivo do banco** | [`Database/schema_and_seed.sql`](https://github.com/israelalkimim/projeto-sesi-dev/blob/main/SesiIndustria.Api/Database/schema_and_seed.sql) e [`Migrations/`](https://github.com/israelalkimim/projeto-sesi-dev/tree/main/SesiIndustria.Api/Migrations) | ✅ Entregue |
 | **6** | **Arquivo README.md** | [`README.md`](https://github.com/israelalkimim/projeto-sesi-dev/blob/main/README.md) (raiz do projeto com todos os tópicos) | ✅ Entregue |
 | **7** | **Arquivo USO_DE_IA.md** | [`USO_DE_IA.md`](https://github.com/israelalkimim/projeto-sesi-dev/blob/main/USO_DE_IA.md) (raiz do projeto com os 6 tópicos do edital) | ✅ Entregue |
-| **8** | **Relação dos arquivos de publicação disponíveis em formato ZIP** | Arquivo [`SesiIndustria_Publicacao.zip`](https://github.com/israelalkimim/projeto-sesi-dev/blob/main/SesiIndustria_Publicacao.zip) + Tabela na Seção 11 deste README | ✅ Entregue |
+| **8** | **Relação dos arquivos de publicação disponíveis em formato ZIP** | Arquivo [`SesiIndustria_Publicacao.zip`](https://github.com/israelalkimim/projeto-sesi-dev/raw/main/SesiIndustria_Publicacao.zip) (Download Direto) e pasta navegável [`publicacao/`](https://github.com/israelalkimim/projeto-sesi-dev/tree/main/publicacao) + Tabela na Seção 11 | ✅ Entregue |
 | **9** | **Relação das limitações ou itens não concluídos (e justificativas do Figma)** | Seção 12 deste README (com justificativas técnicas pontuais) | ✅ Entregue |
 
 ---
@@ -261,7 +261,10 @@ A aplicação foi construída com foco em **Mobile-First e Design Responsivo**:
 
 ## 11. Processo de Publicação e Relação dos Arquivos do Pacote ZIP (Entregável nº 8)
 
-A aplicação foi publicada tanto em contêiner de nuvem gratuita quanto empacotada no arquivo zip autônomo disponível na raiz do repositório: [`SesiIndustria_Publicacao.zip`](https://github.com/israelalkimim/projeto-sesi-dev/blob/main/SesiIndustria_Publicacao.zip).
+A aplicação foi publicada tanto em contêiner de nuvem gratuita quanto empacotada para execução local. Para total comodidade e transparência da banca avaliadora, os arquivos de publicação estão disponíveis de duas formas no GitHub:
+
+1. 📥 **Pacote Compactado para Download Direto:** [`SesiIndustria_Publicacao.zip`](https://github.com/israelalkimim/projeto-sesi-dev/raw/main/SesiIndustria_Publicacao.zip) *(clique para baixar o pacote ZIP de 29MB imediatamente)*;
+2. 📂 **Pasta Descompactada Navegável no GitHub:** [`publicacao/`](https://github.com/israelalkimim/projeto-sesi-dev/tree/main/publicacao) *(permite inspecionar diretamente pelo navegador todos os arquivos, dlls e a árvore `wwwroot` sem precisar baixar nada)*.
 
 ### A) Deploy Automatizado em Nuvem (Render.com)
 * **Imagem Docker Multi-Stage:** Compilação em `mcr.microsoft.com/dotnet/sdk:8.0` e execução enxuta no runtime `mcr.microsoft.com/dotnet/aspnet:8.0`.

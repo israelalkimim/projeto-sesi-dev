@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma de Catálogo de Cursos do CTED - SESI Indústria. Qualificação técnica e profissional de alta precisão para a indústria brasileira.">
+    <title>SESI Indústria | Catálogo de Cursos</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/logo-sesi.svg">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- CABEÇALHO -->
+    <header class="site-header" role="banner">
+        <div class="container header-container">
+            <a href="#" class="site-logo" aria-label="Página inicial SESI Indústria">
+                <img src="/assets/logo-sesi-industria-white.svg" alt="SESI Indústria">
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu de navegação" aria-expanded="false">
+                ☰
+            </button>
+
+            <nav class="main-nav" id="mainNav" role="navigation" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#" class="active">Início</a></li>
+                    <li><a href="#catalogo">Cursos</a></li>
+                    <li><a href="#impacto">Sobre</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#catalogo" class="btn-aluno" role="button">Área do Aluno</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="mainContent" role="main">
+        <!-- HERO BANNER -->
+        <section class="hero-section" aria-labelledby="heroTitle">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="hero-tag">Educação e Tecnologia Digital</span>
+                    <h1 class="hero-title" id="heroTitle">Impulsione sua carreira na indústria</h1>
+                    <p class="hero-subtitle">
+                        Amplie seus conhecimentos e relevância na maior plataforma educacional da indústria paulista. Cursos focados na prática e nas necessidades do mercado moderno.
+                    </p>
+                    <a href="#catalogo" class="btn-cta" role="button">
+                        <span>Conhecer cursos</span>
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+                <div class="hero-media">
+                    <img src="/assets/hero-image.png" alt="Profissional da indústria operando equipamentos técnicos com precisão" loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO CATÁLOGO DE CURSOS (API INTEGRADA) -->
+        <section class="catalogo-section" id="catalogo" aria-labelledby="catalogoTitle">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" id="catalogoTitle">Principais cursos</h2>
+                    <p class="section-subtitle">Explore nosso catálogo completo, pesquise por temas e filtre por modalidade, categoria ou status da turma.</p>
+                </div>
+
+                <!-- Painel de Filtros e Busca -->
+                <div class="filtros-box" role="search" aria-label="Filtros de pesquisa de cursos">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; border-bottom: 1px solid var(--color-border); padding-bottom: 0.75rem;">
+                        <img src="/assets/logo-sesi-industria-primary.svg" alt="SESI Indústria" style="height: 28px; width: auto;">
+                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--color-primary-dark); text-transform: uppercase; letter-spacing: 0.5px;">Painel de Filtros Interativos</span>
+                    </div>
+                    <div class="filtros-grid">
+                        <!-- Busca por Nome -->
+                        <div class="filtro-item">
+                            <label for="searchInput">Pesquisar por curso</label>
+                            <div class="search-input-wrapper">
+                                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                                <input type="search" id="searchInput" class="input-control" placeholder="Ex: Metalurgia, Têxtil, Qualidade..." aria-label="Pesquisar cursos pelo nome ou tema">
+                            </div>
+                        </div>
+
+                        <!-- Filtro por Categoria -->
+                        <div class="filtro-item">
+                            <label for="selectCategoria">Categoria</label>
+                            <select id="selectCategoria" class="select-control" aria-label="Filtrar por Categoria">
+                                <option value="todas">Todas as categorias</option>
+                            </select>
+                        </div>
+
+                        <!-- Filtro por Modalidade -->
+                        <div class="filtro-item">
+                            <label for="selectModalidade">Modalidade</label>
+                            <select id="selectModalidade" class="select-control" aria-label="Filtrar por Modalidade">
+                                <option value="todas">Todas as modalidades</option>
+                            </select>
+                        </div>
+
+                        <!-- Filtro por Status -->
+                        <div class="filtro-item">
+                            <label for="selectStatus">Status</label>
+                            <select id="selectStatus" class="select-control" aria-label="Filtrar por Status">
+                                <option value="todos">Todos os status</option>
+                            </select>
+                        </div>
+
+                        <!-- Botão Limpar Filtros -->
+                        <div class="filtro-item">
+                            <button type="button" id="btnLimpar" class="btn-limpar" aria-label="Limpar todos os filtros aplicados">
+                                <img src="/assets/remove.svg" alt="" aria-hidden="true" style="width: 14px; height: 14px;">
+                                <span>Limpar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status dos Resultados -->
+                <div class="resultados-status-bar">
+                    <div id="contadorResultados" class="contador-resultados" aria-live="polite">
+                        Carregando cursos...
+                    </div>
+                    <div class="nav-arrows" aria-hidden="true" style="display: flex; gap: 0.5rem; align-items: center;">
+                        <button type="button" class="btn-arrow" style="background: #FFF; border: 1px solid var(--color-border); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;" aria-label="Navegar cursos para a esquerda" onclick="document.getElementById('cursosGrid').scrollBy({left: -350, behavior: 'smooth'})">
+                            <img src="/assets/arrow-navigation-1.svg" alt="" style="width: 14px; height: 14px;">
+                        </button>
+                        <button type="button" class="btn-arrow" style="background: #FFF; border: 1px solid var(--color-border); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;" aria-label="Navegar cursos para a direita" onclick="document.getElementById('cursosGrid').scrollBy({left: 350, behavior: 'smooth'})">
+                            <img src="/assets/arrow-navigation.svg" alt="" style="width: 14px; height: 14px;">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Área de Mensagens de Feedback (Vazio / Erro) -->
+                <div id="feedbackArea" style="display: none;" role="status"></div>
+
+                <!-- Grid de Cards de Cursos -->
+                <div id="cursosGrid" class="cursos-grid" aria-label="Lista de cursos disponíveis">
+                    <!-- Cards carregados dinamicamente via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO IMPACTO TRANSFORMADOR (DO FIGMA) -->
+        <section class="impacto-section" id="impacto" aria-labelledby="impactoTitle">
+            <div class="container">
+                <div class="impacto-grid">
+                    <div>
+                        <span class="hero-tag" style="background-color: #FBE9E7; color: var(--color-primary-dark);">Resultados Comprovados</span>
+                        <h2 class="section-title" id="impactoTitle">Impacto transformador na indústria</h2>
+                        <p style="color: var(--color-text-muted); margin-bottom: 2rem;">
+                            Resultados que comprovam a qualidade de nossa metodologia de capacitação contínua para o chão de fábrica e a liderança industrial.
+                        </p>
+                        
+                        <div class="metricas-grid">
+                            <div class="metrica-card">
+                                <div class="metrica-numero">25.000+</div>
+                                <div class="metrica-label">Profissionais Capacitados</div>
+                            </div>
+                            <div class="metrica-card">
+                                <div class="metrica-numero">500+</div>
+                                <div class="metrica-label">Empresas parceiras</div>
+                            </div>
+                            <div class="metrica-card">
+                                <div class="metrica-numero">4.8/5</div>
+                                <div class="metrica-label">Avaliação média</div>
+                            </div>
+                            <div class="metrica-card">
+                                <div class="metrica-numero">2.5M+</div>
+                                <div class="metrica-label">Horas de capacitação</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="diferenciais-list">
+                        <div class="diferencial-card">
+                            <img src="/assets/01-certificacao-red.svg" alt="" class="diferencial-icon" aria-hidden="true">
+                            <div>
+                                <h4>Certificação SESI</h4>
+                                <p>Certificados reconhecidos por indústrias em todo o território nacional.</p>
+                            </div>
+                        </div>
+
+                        <div class="diferencial-card">
+                            <img src="/assets/02-professores-red.svg" alt="" class="diferencial-icon" aria-hidden="true">
+                            <div>
+                                <h4>Professores especialistas</h4>
+                                <p>Corpo docente com vivência prática e atuação direta no setor produtivo.</p>
+                            </div>
+                        </div>
+
+                        <div class="diferencial-card">
+                            <img src="/assets/03-suporte-red.svg" alt="" class="diferencial-icon" aria-hidden="true">
+                            <div>
+                                <h4>Suporte contínuo</h4>
+                                <p>Acompanhamento pedagógico e tutoria durante toda a jornada de aprendizagem.</p>
+                            </div>
+                        </div>
+
+                        <div class="diferencial-card">
+                            <img src="/assets/04-flexibilidade-bege.svg" alt="" class="diferencial-icon" aria-hidden="true">
+                            <div>
+                                <h4>Flexibilidade Total</h4>
+                                <p>Acesse o Ambiente Virtual de Aprendizagem de qualquer dispositivo, no seu ritmo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO QUEM FEZ RECOMENDA (DEPOIMENTOS DO FIGMA) -->
+        <section class="depoimentos-section" id="depoimentos" aria-labelledby="depoimentosTitle">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title" id="depoimentosTitle">Quem fez recomenda</h2>
+                    <p class="section-subtitle">Veja a experiência e o avanço profissional de quem se capacitou com os cursos SESI Indústria.</p>
+                </div>
+
+                <div class="depoimentos-grid">
+                    <div class="depoimento-card">
+                        <div class="stars">
+                            <img src="/assets/star.svg" alt="5 estrelas" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                        </div>
+                        <p class="depoimento-texto">"A experiência de capacitação no SESI mudou meu dia a dia no torno mecânico. Conteúdo técnico direto ao ponto e aplicabilidade imediata."</p>
+                        <div>
+                            <div class="autor-nome">Lucas Ramos</div>
+                            <div class="autor-cargo">Torneiro Mecânico - Indústria Metalmecânica</div>
+                        </div>
+                    </div>
+
+                    <div class="depoimento-card">
+                        <div class="stars">
+                            <img src="/assets/star.svg" alt="5 estrelas" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                        </div>
+                        <p class="depoimento-texto">"Concluir o curso de Controle de Qualidade me deu a segurança necessária para assumir a supervisão de auditoria de processos da minha fábrica."</p>
+                        <div>
+                            <div class="autor-nome">Mariana Costa</div>
+                            <div class="autor-cargo">Supervisora de Qualidade - Setor Automotivo</div>
+                        </div>
+                    </div>
+
+                    <div class="depoimento-card">
+                        <div class="stars">
+                            <img src="/assets/star.svg" alt="5 estrelas" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                            <img src="/assets/star.svg" alt="" aria-hidden="true">
+                        </div>
+                        <p class="depoimento-texto">"Os cursos de química e sustentabilidade são muito completos. Conseguimos reduzir custos com descarte de efluentes em mais de 30%."</p>
+                        <div>
+                            <div class="autor-nome">Thiago Alencar</div>
+                            <div class="autor-cargo">Analista de Meio Ambiente - Indústria Química</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO CTA FINAL (PRONTO PARA TRANSFORMAR SUA CARREIRA) -->
+        <section class="cta-final-section">
+            <div class="container">
+                <div class="cta-banner">
+                    <div>
+                        <h2>Pronto para transformar sua carreira na indústria?</h2>
+                        <p>Junte-se a mais de 25 mil profissionais qualificados. Inicie sua jornada hoje mesmo no Ambiente Virtual de Aprendizagem do SESI.</p>
+                        <a href="#catalogo" class="btn-cta" role="button">
+                            <span>Inscreva-se agora</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                    <div class="cta-banner-media">
+                        <img src="/assets/video-thumb.png" alt="Ambiente de aprendizagem prática industrial SESI" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL DE DETALHES DO CURSO (ACESSÍVEL - WCAG 2.1) -->
+    <div class="modal-overlay" id="modalCurso" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-header-info">
+                    <span class="modal-category" id="modalCategory">Categoria</span>
+                    <h3 class="modal-title" id="modalTitle">Título Completo do Curso</h3>
+                </div>
+                <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Fechar detalhes do curso">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Modalidade</span>
+                        <span class="info-val" id="modalModalidade">EAD</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Carga Horária</span>
+                        <span class="info-val" id="modalCarga">40h</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-val" id="modalStatus">Inscrições Abertas</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Disponibilidade</span>
+                        <span class="info-val" id="modalData">Imediato</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="modal-section-title">Sobre o Curso</h4>
+                    <p id="modalDescricao" style="line-height: 1.6; color: var(--color-text-body);"></p>
+                </div>
+
+                <div>
+                    <h4 class="modal-section-title">Público-Alvo</h4>
+                    <p id="modalPublico" style="line-height: 1.6; color: var(--color-text-body);"></p>
+                </div>
+
+                <div>
+                    <h4 class="modal-section-title">Conteúdo Programático e Módulos</h4>
+                    <div id="modulosList" class="modulos-accordion">
+                        <!-- Módulos e aulas renderizados via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="modalCloseFooter">Fechar</button>
+                <button type="button" class="btn-primary" onclick="alert('Inscrição simulada com sucesso no Ambiente Virtual de Aprendizagem (Moodle/AVA)!')">
+                    Quero me Inscrever
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="/assets/logo-sesi-industria-white.svg" alt="SESI Indústria" style="height: 36px; width: auto;">
+                    <p>
+                        Centro de Tecnologias e Educação Digital (CTED).<br>
+                        Formação e qualificação tecnológica para o desenvolvimento da indústria.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook SESI">
+                            <img src="/assets/icon-facebook-24px.svg" alt="" aria-hidden="true">
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram SESI">
+                            <img src="/assets/icon-instagram-24px.svg" alt="" aria-hidden="true">
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn SESI">
+                            <img src="/assets/icon-linkedIn-24px.svg" alt="" aria-hidden="true">
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Navegação</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#catalogo">Cursos Disponíveis</a></li>
+                        <li><a href="#impacto">Sobre o CTED</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="/swagger" target="_blank">Documentação da API (Swagger)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Áreas</h4>
+                    <ul class="footer-links">
+                        <li><a href="#catalogo">Metalurgia e Mecânica</a></li>
+                        <li><a href="#catalogo">Design Têxtil</a></li>
+                        <li><a href="#catalogo">Gestão e Qualidade</a></li>
+                        <li><a href="#catalogo">Sustentabilidade Industrial</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Suporte e Contato</h4>
+                    <ul class="footer-links">
+                        <li><span>Central de Atendimento ao Aluno</span></li>
+                        <li><span>0800 555 7374</span></li>
+                        <li><span>suporte.ava@sesisp.org.br</span></li>
+                        <li><span>Segunda a Sexta, das 08h às 20h</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 SESI - Serviço Social da Indústria | CTED. Todos os direitos reservados.</p>
+                <p>Processo Seletivo Desenvolvedor de Sistemas I</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
