@@ -277,7 +277,7 @@ O arquivo ZIP foi gerado via `dotnet publish -c Release` e contém todos os arte
 
 | Arquivo / Diretório no ZIP | Finalidade Técnica |
 |---|---|
-| `SesiIndustria.Api.dll` / `SesiIndustria.Api.exe` | Binário executável principal da aplicação compilado em Release (.NET 8) |
+| `SesiIndustria.Api.dll` | Binário gerenciado multiplataforma da aplicação compilado em Release (.NET 8) |
 | `appsettings.json` / `appsettings.Development.json` | Configurações de logging, portas e ConnectionString do SQLite |
 | `wwwroot/` | Pasta completa do Front-End (`index.html`, `css/styles.css`, `js/app.js` e subpasta `assets/` com todas as imagens, ícones SVG e fontes) |
 | `runtimes/` | Drivers nativos e bibliotecas de compatibilidade do SQLite (`e_sqlite3`) para Windows, Linux (x64/ARM) e macOS |
